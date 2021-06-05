@@ -35,3 +35,41 @@ Sample Output
 Time Limit: 1
 Memory Limit: 256
 */
+
+/* Solution */
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        // Number of digits in given binary code.
+        cin >> n;
+        string s;
+        //storing it in string because input of the que doesn't allow to give
+        // spaces between the digits of binary number.
+        cin >> s;
+        long long result = 0;
+        long long power2 = 1;
+        // Storing result and power2 in long long because we can take a binary
+        // number of up to 60 digits if allone it will produce a huge number.
+        for (int i = s.size() - 1; i >= 0; --i)
+        {
+            int binary_digit = s[i] - '0';
+            // This line is converting s[i] to integer because during the calculation
+            //  of two different datatypes answer stored in heigher datatype.
+            result = result + (binary_digit * power2);
+            power2 = power2 * 2;
+            //converting the binay no to its respective value in
+            //integer if binary digit 0 no hange if 1 power will be
+            //multiplied to it.
+        }
+        cout << result << endl;
+    }
+}
