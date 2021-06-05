@@ -45,3 +45,41 @@ For the first testcase,considering the sequence 2 2 2 2 2, when we multiply all 
 
 For the second testcase,considering the sequence 2 2 2 2, when we multiply all the elements get 16 as the product.The least significant digit of 16 is 6 , so the string is not liked by Jiya.
 */
+
+/* Solution*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        long long product = 1;
+        //Range of product according to question was 10^15.
+        for (int i = 0; i < n; ++i)
+        {
+            // Taking digit as a input whose products to be calculated.
+            int x;
+            cin >> x;
+            product = product * x;
+            //Multiplying every upcomming digit to product.
+        }
+        int digit = product % 10;
+        // Getting the last digit of the product calculated.
+        if (digit == 2 || digit == 5 || digit == 3)
+        {
+            cout << "YES\n";
+        }
+        else
+        {
+            cout << "NO\n";
+        }
+        // Checking the given conditions.
+    }
+}
