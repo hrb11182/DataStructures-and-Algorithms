@@ -51,3 +51,21 @@ For first test case, the set of possible points are (3,0),(2,1),(1,2),(-3,0),(-2
 
 For second test case, the set of possible points are (1,0),(-1,0),(0,1) and (0,-1), i.e. total of 4 points possible.
 */
+
+// Solution
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+  int t;
+  cin >> t;
+  while (t--)
+  {
+    long long int n;
+    cin >> n;
+    cout << 4 * n << endl;
+  }
+}
