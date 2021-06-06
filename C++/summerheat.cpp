@@ -39,3 +39,10 @@ Date Added:	31-05-2021
 Time Limit:	0.5 secs
 Source Limit:	50000 Bytes
 */
+
+//Solution
+#include <bits/stdc++.h>
+
+int main()
+{
+}

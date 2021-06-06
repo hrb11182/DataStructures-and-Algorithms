@@ -45,3 +45,74 @@ s -> S => 83
 
 76 - 98 - 120 + 80 + 83 = 21 and it is not a prime number
 */
+
+#include <bits/stdc++.h>
+
+using namespace std;
+char upper(char c)
+{
+    return 'A' + (c - 'a');
+    //refer capitalbaazi.
+}
+
+char lower(char c)
+{
+    return 'a' + (c - 'A');
+    //refer capitalbaazi.
+}
+
+int main()
+{
+    string s;
+    cin >> s;
+    //This loop is converting the uppercase letters to lowercase and viceversa.
+    for (int i = 0; i < s.size(); ++i)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            s[i] = upper(s[i]);
+        }
+        else if (s[i] >= 'A' && s[i] <= 'Z')
+        {
+            s[i] = lower(s[i]);
+        }
+    }
+    int result;
+    //This loop is calculating the sum of ASCII value of both upper and lower case and
+    //subtracting the sum of lowercase from the sum of ASCII value of uppercase.
+    for (int i = 0; i < s.size(); ++i)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            result = result - s[i];
+        }
+        else if (s[i] >= 'A' && s[i] <= 'Z')
+        {
+            result = result + s[i];
+        }
+    }
+    //If the result is negetive then converting it in to the positive value by this if condition.
+    if (result < 0)
+    {
+        result = result * -1;
+    }
+    //Checking if the result is prime.
+    int flag = 0;
+    for (int i = 2; i < result; ++i)
+    {
+        if (result % i == 0)
+        {
+            flag = 1;
+            break;
+        }
+    }
+    //If number is prime print 1 else 0.
+    if (flag == 0)
+    {
+        cout << 1;
+    }
+    else
+    {
+        cout << 0;
+    }
+}
