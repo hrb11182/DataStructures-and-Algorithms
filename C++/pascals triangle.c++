@@ -29,3 +29,95 @@ Source Limit:
 Explanation
 For each line find the binomial coeffients and print the values with required spaces between them.
 */
+
+//Solution
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        int a[n][n];
+        a[0][0] = 1;
+        for (int i = 1; i < n; ++i)
+        {
+            a[i][0] = 1;
+            // First column will always have 1 since col is not
+            //changing so y axis remain 0 and x will change since rows
+            //are changing
+            a[i][i] = 1;
+            //Similarly last col will always have 1 since this triagle expand towrds
+            //right and down so both row adn col will change acc to value of i.
+            for (int j = 1; j < i; ++j)
+            {
+                a[i][j] = a[i - 1][j - 1] + a[i - 1][j];
+                //here we added number just before the number
+                // above the current number we are trying to find and
+                //the number above it.
+            }
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j <= i; ++j)
+            {
+                cout << a[i][j] << " ";
+            }
+            //This two loops are printing the triangle.
+            cout << endl;
+        }
+    }
+}
+
+// Solution 2
+/* Here we will use precomputation technique we will calculate each pascal triangle for the max range of input but it will only work when range of input is known*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+const int N = 50;
+
+int main()
+{
+    int t;
+    cin >> t;
+    long long int a[N][N];
+    a[0][0] = 1;
+    for (int i = 1; i < N; ++i)
+    {
+        a[i][0] = 1;
+        // First column will always have 1 since col is not
+        //changing so y axis remain 0 and x will change since rows
+        //are changing
+        a[i][i] = 1;
+        //Similarly last col will always have 1 since this triagle expand towrds
+        //right and down so both row adn col will change acc to value of i.
+        for (int j = 1; j < i; ++j)
+        {
+            a[i][j] = a[i - 1][j - 1] + a[i - 1][j];
+            //here we added number just before the number
+            // above the current number we are trying to find and
+            //the number above it.
+        }
+    }
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j <= i; ++j)
+            {
+                cout << a[i][j] << " ";
+            }
+            //This two loops are printing the triangle.
+            cout << endl;
+        }
+    }
+}
