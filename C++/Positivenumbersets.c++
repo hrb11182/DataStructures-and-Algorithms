@@ -37,3 +37,51 @@ Output: 30 15 0
 
 Note: u can try compiling and testing for other valid test cases so as to understand the problem. the "expected correct answer" will show up.
 */
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int a, b, c;
+    cin >> a >> b >> c;
+    int cth_num;
+    // We are calculating the value of cth_num from the set of numbers divisible by a or b and by both(means number at cth position in that set)
+    for (int i = 2; c > 0; i++)
+    {
+        if (i % a == 0 || i % b == 0)
+        {
+            c--;
+            cth_num = i;
+        }
+    }
+    // This loop is taking the lcm of a&b;
+    int lcm;
+    for (int i = 1; i <= a * b; ++i)
+    {
+        if (i % a == 0 && i % b == 0)
+        {
+            lcm = i;
+            break;
+        }
+    }
+    // Now after this line just the simple conditions of questions.
+    int step;
+    if (cth_num % a == 0 && cth_num % b == 0)
+    {
+        step = lcm;
+    }
+    else if (cth_num % a == 0)
+    {
+        step = a;
+    }
+    else
+    {
+        step = b;
+    }
+    for (int i = cth_num; i >= 0; i = i - step)
+    {
+        cout << i << " ";
+    }
+}
