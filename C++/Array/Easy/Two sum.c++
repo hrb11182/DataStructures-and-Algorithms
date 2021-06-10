@@ -40,7 +40,7 @@ using namespace std;
 
 int main()
 {
-    vector<int> twoSum(vector<int> & nums, int target)
+    vector<int> twoSum(vector<int> nums, int target)
     {
         /* Initialised a vector which takes the vector and an integer as an input*/
         vector<int> result;
@@ -57,9 +57,11 @@ int main()
                 /* This two lines is tho get the index position where the iterator is present*/
                 result.push_back(it2 - nums.begin());
                 /* Since iterator doesn't have any indexing scheme so if we substract nums.begin from the present iterators position then it will return the present iterator position for ex nums.begin() = 0 and if iterator is at idx 5 then 5-0 will return 5 position of our iterator*/
-                break
+                break;
             }
         }
         return result;
     }
 }
+
+//  Second approach will be using hash table.
