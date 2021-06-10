@@ -65,3 +65,36 @@ int main()
 }
 
 //  Second approach will be using hash table.
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    vector<int> twoSum(vector<int> nums, int targetSum)
+    {
+        // Initialised a vector which takes the vector and an integer as an input
+        unordered_map<int, int> umap;
+        //Initialised a hash table using unordered map.
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            //Looping through the vector taken as an input.
+            int num = nums[i];
+            //Copying the element at ith index to a new variable.
+            int targetNum = targetSum - num;
+            //Calculating the value of the second number we need to find from the array.
+            auto it = umap.find(targetNum);
+            //initializing an terator and trying to find the second num in our hash table..
+            if (it != umap.end())
+            {
+                //If ump.end is not found that means second number is found.
+                return {it->second, i};
+                //Due to the auto keyword iterator is of unordered map type so first value will be the value at ith idex and second value is the index itself since we need to reurn the value of index so we need to return it->second {because it is stored in that way in unordered map see line below this comment leave the bracket} .
+            }
+            umap[num] = i;
+            //Storing in as as key value pair here num actual value is acting like a key and index position is a value.
+        }
+        return {};
+    }
+}
