@@ -12,15 +12,14 @@ Here we take two nested loops one will be fixed on the first element and the sec
     
     3- Now move that pointer whose value is less to there respective direction(left pointer towards right and right towards left).
 */
-#include <bits/stdc++.h>
-
-using namespace std;
-
-int main()
-{
-    int maxArea(vector<int> & height)
-    {
-        int left_ptr = 0;
-        int right_ptr = height.size() - 1;
+int maxArea(vector<int>& height) {
+    int water = 0;
+    int left_ptr = 0, right_ptr = height.size() - 1;
+    while (left_ptr < right_ptr) {
+        int container_height = min(height[left_ptr], height[right_ptr]);
+        water = max(water, (right_ptr - left_ptr) * container_height);
+        while (height[left_ptr] <= container_height && left_ptr < right_ptr) left_ptr++;
+        while (height[right_ptr] <= container_height && left_ptr < right_ptr) right_ptr--;
     }
+    return water;
 }
