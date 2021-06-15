@@ -29,3 +29,18 @@ Constraints:
 The number of nodes in the tree is in the range [0, 104].
 -100 <= Node.val <= 100
 */
+
+//ALGORITHM
+/*
+This question could be solved recursively for each node of tree we can use the formula {1 + max(left, right)} we are using "1 +" here because because if we are at any node thent its height will be counted as 1 for every node we can call this formula recursively.
+*/
+
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(root == null) return 0;
+        int left = maxDepth(root->left);
+        int right = maxDepth(root->right);
+        return 1 + max(left, right);
+    }
+};
