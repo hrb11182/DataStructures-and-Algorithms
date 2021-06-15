@@ -17,41 +17,50 @@ First sort the array and fix a value and then take two pointers high and low pla
 
 //APPROACH - 3 CODE
 
-vector<vector<int>> threeSum(vector<int> &nums)
-{
-    sort(num.begin(), num.end());
-    vector<vector<int>> result;
+ vector<vector<int> > threeSum(vector<int> &num) {
+    
+    vector<vector<int> > res;
 
-    for (int i = 0; i < nums.size; i++)
-    {
-        if (i == 0 || (i > 0 && nums[i] != nums[i - 1]))
-        {
-            int lo == i + 1, hi = nums.size(), sum = 0 - nums[i];
+    std::sort(num.begin(), num.end());
 
-            while (lo < hi)
-            {
-                if (nums[lo] + nums[hi] == sum)
-                {
-                    vector<int> temp;
-                    temp.push_back(num[i]);
-                    temp.push_back(num[lo]);
-                    temp.push_back(num[hi]);
-                    result.push_back(temp);
+    for (int i = 0; i < num.size(); i++) {
+        
+        int target = -num[i];
+        int front = i + 1;
+        int back = num.size() - 1;
 
-                    while (lo < hi && nums[lo] == nums[lo + 1])
-                        lo++;
-                    while (lo < hi && nums[hi] == nums[hi - 1])
-                        hi++;
+        while (front < back) {
 
-                    lo++;
-                    hi++;
-                }
-                else if (nums[lo] + nums[hi] < sum)
-                    lo++;
-                else
-                    hi--;
+            int sum = num[front] + num[back];
+            
+            // Finding answer which start from number num[i]
+            if (sum < target)
+                front++;
+
+            else if (sum > target)
+                back--;
+
+            else {
+                vector<int> triplet = {num[i], num[front], num[back]};
+                res.push_back(triplet);
+                
+                // Processing duplicates of Number 2
+                // Rolling the front pointer to the next different number forwards
+                while (front < back && num[front] == triplet[1]) front++;
+
+                // Processing duplicates of Number 3
+                // Rolling the back pointer to the next different number backwards
+                while (front < back && num[back] == triplet[2]) back--;
             }
+            
         }
+
+        // Processing duplicates of Number 1
+        while (i + 1 < num.size() && num[i + 1] == num[i]) 
+            i++;
+
     }
-    return result;
+    
+    return res;
+    
 }
