@@ -37,6 +37,70 @@ Methods pop, top and getMin operations will always be called on non-empty stacks
 At most 3 * 104 calls will be made to push, pop, top, and getMin.
 */
 
+/*
+ Here we are going to have two stacks one will store the elements and the next will store the min elements if we push the element in stack we compare it with the top element of the min stack if it is smaller then that then we will push that element in both the stack else we push the given value in our stack and we push the present top value of min stack again in the mion stack so that number of elements in both the stack remain constant and the minimum element remain on the top of the min stack so when ever it asks for min element we pop out the first element of our mins stack this will contain the min element for each index.
+*/
+
+
+class MinStack {
+    int stack[10000];
+    int min[10000];
+    int topPtr;
+    int minPtr;
+public:
+    /** initialize your data structure here. */
+    MinStack() {
+        topPtr = -1;
+        minPtr = -1;
+    }
+    
+    void push(int x) {
+        if(topPtr >= 10000)
+            return;
+        
+        stack[++topPtr] = x;
+        
+        if(minPtr >= 0)
+        {
+            if(min[minPtr] > x)
+                min[++minPtr] = x;
+            else
+            {
+                min[minPtr+1] = min[minPtr];
+                minPtr += 1;
+            }
+        }
+        else
+            min[++minPtr] = x;
+                
+    }
+    
+    void pop() {
+        if(topPtr < 0)      //Underflow
+            return;
+        
+        topPtr -= 1;
+        minPtr -= 1;
+    }
+    
+    int top() {        
+        return stack[topPtr];
+    }
+    
+    int getMin() {
+        return min[minPtr];
+    }
+};
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(x);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
+
 
 class MinStack {
 public:
