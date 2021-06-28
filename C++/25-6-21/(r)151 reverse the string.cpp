@@ -53,13 +53,13 @@ public:
 
 		while(i<n){
 // Loop to traverse till the end of the string.
-			while(i<n; && s[i] !=' ') i++;
+			while(i<n && s[i] ==' ') i++;
 // This loop will tarverse the string untill it gets a white space.
 			if(i>=n) break;
 // If i exceeds max size of string break.
-			int j = i +1;
+			int j = i + 1;
 // Starting another loop from the next element of the string.
-			while(j<n && s[j] != ' ') j++
+			while((j<n) && (s[j] != ' ')) j++;
 // This loop will also break white spaces.
 			string sub = s.substr(i, j-i);
 // Using stl function to capture the string between i and j-1.
