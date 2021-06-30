@@ -32,6 +32,28 @@ s contains no leading or trailing spaces.
 class Solution {
 public:
     string sortSentence(string s) {
-        
+        string word;
+        vector<string>v(10);
+// Initialised a vector of size 10 to store the words of the sentences.
+        for(int i=0; i<s.size(); i++){
+        	if(s[i]>=48 && s[i]<=57){
+// ASCII value of the numbers starts from 48 and goes till 57 so we will convert the string to int if we encounter this range of ascii.
+        		v[s[i]-48] = word +" ";
+//  Here we will add the word itrated till now in the vector at the index position (s[i]-48) conversting the string to int.
+        		word = "";
+        		i++;
+// Now we are making the word empty and moving the pointer i ahead.
+        	}else word += s[i];
+// If we dont hit any number we will keep on appending the letters to the string.
+        }
+        string ans;
+// To store the answer.
+        for(string x:v){
+// Iterating through vector v and taking the element present at the starting index and storing it in the answer.
+        	ans+=x;
+        }
+        ans.pop_back();
+// need to remove the space added by the line 41.
+        return ans; 
     }
 };
