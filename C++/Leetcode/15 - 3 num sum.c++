@@ -17,6 +17,8 @@ First sort the array and fix a value and then take two pointers high and low pla
 
 //APPROACH - 3 CODE
 
+class Solution {
+public:
  vector<vector<int> > threeSum(vector<int> &num) {
     
     vector<vector<int> > res;
@@ -64,3 +66,4 @@ First sort the array and fix a value and then take two pointers high and low pla
     return res;
     
 }
+};
